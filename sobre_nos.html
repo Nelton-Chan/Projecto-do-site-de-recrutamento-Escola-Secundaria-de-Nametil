@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>sobre_nós</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f1f5f9;
+      color: #333;
+    }
+
+    header {
+      background: url('file_00000000d27861f4bc9ecc60f58b6909.png') center center/cover no-repeat;
+      background-size: cover;
+      color: #ffffff;
+      text-align: center;
+      padding: 80px 20px;
+      border-bottom: 5px solid #0099cc;
+      position: relative;
+      height: 80vh;
+      min-height: 100px;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 64, 128, 0.6);
+      z-index: 1;
+    }
+
+    header h1, header p {
+      position: relative;
+      z-index: 2;
+    }
+
+    nav {
+      font-size: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: black;
+    }
+
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav a:hover {
+      background-color: #575757;
+    }
+
+    .content {
+      padding: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 20px;
+      width: 100%;
+      max-width: 280px;
+      text-align: center;
+      transition: 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .card:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .card i {
+      font-size: 32px;
+      color: #007BFF;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #007BFF;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #e2e8f0;
+      font-size: 13px;
+      margin-top: 30px;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Mogovolas rumo ao Futuro </h1>
+  <p>Acompanhe e aproveite as oportunidades disponíveis</p>
+</header>
+
+<nav>
+  <a href="menu_da_empresa.html"><i class="fas fa-home"></i> Início</a>
+  <a href="gerenciar_vagas.html"><i class="fas fa-briefcase"></i> Ver Vagas</a>
+  <a href="painel da empresa.html"><i class="fas fa-user-edit"></i> Editar Perfil</a>
+  <a href="formação .html"><i class="fas fa-book"></i> Formação</a>
+  <a href="sobre_nos.html"><i class="fas fa-info"></i> Sobre Nós</a>
+  <a href="serviços_empresa.html"><i class="fas fa-cogs"></i> Serviços</a>
+  <a href="index.html"><i class="fas fa-sign-out-alt"></i> Sair</a>
+</nav>
+  <h1>Sobre-nós</h1>
+<div class="content">
+  <div class="card">
+    <i class="fas fa-pencil"></i>
+    <h3>Descrição </h3>
+    <p>Inicialmente este site foi criado no dia 14/05/2025 por mim <strong>Nelton da Méria Nazaré Ambate</strong> estudante da Escola Secundária de Nametil este é um projeto criado para ajudar os jovens a encontrarem emprego com mais facilidade, por meio de um site simples e acessível.</p>
+</div>
+
+<div class="card">
+	<i class="fas fa-cogs"></i><i class="fas fa-lightbulb"></i>
+	<h3>Como funciona ? e Quais as motivações?</h3>
+	<p> O site funciona com uma interface dupla, de um lado para os usuários (jovens que procuram emprego) e do outro para as empresas recrutadoras.<br>A plataforma irá divulgar vagas de emprego e permitir o envio de currículos, aproximando candidatos das oportunidades o 
+<p>A motivação surgiu ao observar o grande número de jovens sem trabalho e com poucas opções de acesso a vagas</p>
+  </div>
+  <div class="card">
+    <i class="fas fa-user"></i>
+    <h3>Interface do usuário</h3>
+    <p>Nesta parte do site os jovens tem a oportunidade de editar o seu perfil, acessar formações especiais e cursos online ou presenciais que os ajudarão a ter qualificações importantes, assistência 24h e visualização das vagas disponíveis no momento</p>
+  </div>
+  <div class="card">
+    <i class="fas fa-hotel"></i>
+    <h3>Interface da Empresa</h3>
+    <p>Deste lado, que foi feito especialmente para as empresas que procuram trabalhadores qualificados para a sua intuição temos várias funcionalidades, desde edição do perfil da empresa,  gerenciamento de vagas, relatórios detalhados até mensagens em tempo real com os candidatos</p>
+  </div>
+</div>
+
+<footer>
+  Nelton da Méria Nazaré Ambate&copy; Todos direitos reservados 
+</footer>
+
+</body>
+</html>

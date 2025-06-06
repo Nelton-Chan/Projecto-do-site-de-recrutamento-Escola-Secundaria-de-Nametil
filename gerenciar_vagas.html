@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gerenciar Vagas - Agência de Recrutamento</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f1f5f9;
+      color: #333;
+    }
+    header {
+      background: url('file_00000000d27861f4bc9ecc60f58b6909.png') center center/cover no-repeat;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+      border-bottom: 5px solid #0099cc;
+      position: relative;
+      height: 50vh;
+      min-height: 100px;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 64, 128, 0.6);
+      z-index: 1;
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 2;
+    }
+    nav {
+      font-size: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: black;
+    }
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    nav a:hover {
+      background-color: #575757;
+    }
+    .content {
+      padding: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.4s; }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #007BFF;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 600;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    button {
+      background: #007b7b;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #005f5f;
+    }
+    .actions {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+    .actions button {
+      background: #007b7b;
+      flex: none;
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+    .actions button.delete {
+      background: #cc4444;
+    }
+    .actions button.delete:hover {
+      background: #991111;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #e2e8f0;
+      font-size: 13px;
+      margin-top: 30px;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Gerenciar Vagas</h1>
+  <p>Crie, edite e exclua suas vagas facilmente</p>
+</header>
+
+<nav>
+  <a href="menu_da_empresa.html"><i class="fas fa-home"></i> Início</a>
+  <a href="gerenciar_vagas.html"><i class="fas fa-briefcase"></i> Editar Vagas</a>
+  <a href="painel da empresa.html"><i class="fas fa-user-edit"></i> Editar Perfil</a>
+  <a href="sobre_nos.html"><i class="fas fa-info"></i> Sobre Nós</a>
+  <a href="serviços_empresa.html"><i class="fas fa-cogs"></i> Serviços</a>
+  <a href="index.html"><i class="fas fa-sign-out-alt"></i> Sair</a>
+</nav>
+
+<div class="content">
+  <div class="card" style="animation-delay: 0s;">
+    <h3>Nova Vaga</h3>
+    <label for="tituloVaga">Título</label>
+    <input type="text" id="tituloVaga" placeholder="Digite o título da vaga" />
+
+    <label for="localVaga">Localização</label>
+    <input type="text" id="localVaga" placeholder="Digite a localização" />
+
+    <label for="descricaoVaga">Descrição</label>
+    <textarea id="descricaoVaga" rows="4" placeholder="Descreva a vaga"></textarea>
+
+    <button onclick="salvarVaga()">Salvar Vaga</button>
+  </div>
+
+  <div id="listaVagas"></div>
+</div>
+
+<footer>
+  Nelton da Méria Nazaré Ambate&copy; Todos direitos reservados 
+</footer>
+
+<script>
+  function salvarVaga() {
+    const titulo = document.getElementById('tituloVaga').value.trim();
+    const local = document.getElementById('localVaga').value.trim();
+    const descricao = document.getElementById('descricaoVaga').value.trim();
+
+    if (!titulo || !local || !descricao) {
+      alert('Por favor, preencha todos os campos da vaga.');
+      return;
+    }
+
+    let vagas = JSON.parse(localStorage.getItem('vagasEmpresa')) || [];
+
+    vagas.push({ titulo, local, descricao });
+
+    localStorage.setItem('vagasEmpresa', JSON.stringify(vagas));
+    alert('Vaga salva com sucesso!');
+
+    limparFormulario();
+    exibirVagas();
+  }
+
+  function limparFormulario() {
+    document.getElementById('tituloVaga').value = '';
+    document.getElementById('localVaga').value = '';
+    document.getElementById('descricaoVaga').value = '';
+  }
+
+  function exibirVagas() {
+    const vagas = JSON.parse(localStorage.getItem('vagasEmpresa')) || [];
+    const lista = document.getElementById('listaVagas');
+
+    lista.innerHTML = '';
+
+    vagas.forEach((vaga, i) => {
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.style.animationDelay = `${i * 0.2}s`;
+      div.innerHTML = `
+        <h3>${vaga.titulo}</h3>
+        <p><strong>Local:</strong> ${vaga.local}</p>
+        <p>${vaga.descricao}</p>
+        <div class="actions">
+          <button onclick="editarVaga(${i})"><i class="fas fa-edit"></i> Editar</button>
+          <button class="delete" onclick="excluirVaga(${i})"><i class="fas fa-trash"></i> Excluir</button>
+        </div>
+      `;
+      lista.appendChild(div);
+    });
+  }
+
+  function editarVaga(index) {
+    const vagas = JSON.parse(localStorage.getItem('vagasEmpresa')) || [];
+    const vaga = vagas[index];
+
+    if (!vaga) return alert('Vaga não encontrada!');
+
+    document.getElementById('tituloVaga').value = vaga.titulo;
+    document.getElementById('localVaga').value = vaga.local;
+    document.getElementById('descricaoVaga').value = vaga.descricao;
+
+    vagas.splice(index, 1);
+    localStorage.setItem('vagasEmpresa', JSON.stringify(vagas));
+    exibirVagas();
+  }
+
+  function excluirVaga(index) {
+    if (!confirm('Deseja realmente excluir esta vaga?')) return;
+    const vagas = JSON.parse(localStorage.getItem('vagasEmpresa')) || [];
+    vagas.splice(index, 1);
+    localStorage.setItem('vagasEmpresa', JSON.stringify(vagas));
+    exibirVagas();
+  }
+
+  window.onload = exibirVagas;
+</script>
+
+</body>
+</html>

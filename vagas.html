@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vagas de Trabalho - Agência de Recrutamento</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f1f5f9;
+      color: #333;
+    }
+
+    header {
+      background: url('file_00000000d27861f4bc9ecc60f58b6909.png') center center/cover no-repeat;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+      border-bottom: 5px solid #0099cc;
+      position: relative;
+      height: 80vh;
+      min-height: 100px;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 64, 128, 0.6);
+      z-index: 1;
+    }
+
+    header h1, header p {
+      position: relative;
+      z-index: 2;
+    }
+
+    nav {
+      font-size: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: lightslategrey;
+    }
+
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav a:hover {
+      background-color: #575757;
+    }
+
+    .content {
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      grid-auto-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      overflow: hidden;
+      width: 100%;
+      max-width: 300px;
+      transition: 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+      padding: 15px;
+    }
+
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.4s; }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: #007BFF;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .card button {
+      margin-top: 10px;
+      background-color: #007b7b;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .card button:hover {
+      background-color: #005f5f;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #e2e8f0;
+      font-size: 13px;
+      margin-top: 30px;
+    }
+
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Vagas de Trabalho</h1>
+  <p>Confira as oportunidades disponíveis para você</p>
+</header>
+
+<nav>
+  <a href="menu.html"><i class="fas fa-home"></i> Início</a>
+  <a href="vagas.html"><i class="fas fa-briefcase"></i> Ver Vagas</a>
+  <a href="painel do usuário.html"><i class="fas fa-user-edit"></i> Editar Perfil</a>
+  <a href="formação.html"><i class="fas fa-book"></i> Formação</a>
+  <a href="serviços.html"><i class="fas fa-cogs"></i> Serviços</a>
+  <a href="index.html"><i class="fas fa-sign-out-alt"></i> Sair</a>
+</nav>
+
+  </div>
+  <div class="content">
+  <div class="card">
+    <img src="Design grafico.jpg" alt="Vaga Designer Gráfico">
+    <div class="card-body">
+      <h3>Designer Gráfico</h3>
+      <p>Empresa criativa busca designer com domínio de Photoshop e Illustrator.</p>
+      <button>Candidatar-se</button>
+    </div>
+  </div>
+<div class="card">
+    <img src="photo-1667844141324-61585c18b0df.jpeg" alt="Vaga Desenvolvedor Web">
+    <div class="card-body">
+      <h3>Professor de Inglês</h3>
+      <p>Alguem que tenha experiência e qualificações para explicar inglês.</p>
+      <button>Candidatar-se</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="premium_photo-1720287601920-ee8c503af775.jpeg" alt="Vaga Desenvolvedor Web">
+    <div class="card-body">
+      <h3>Desenvolvedor Web</h3>
+      <p>Procura-se dev com experiência em HTML, CSS, JS e frameworks modernos.</p>
+      <button>Candidatar-se</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="designer-industrial-trabalhando-no-modelo-3d_23-2149370130.webp" alt="Vaga Auxiliar Administrativo">
+    <div class="card-body">
+      <h3>Auxiliar Administrativo</h3>
+      <p>Vaga para profissional organizado, com domínio de ferramentas de escritório.</p>
+      <button>Candidatar-se</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Nelton da Méria Nazaré Ambate&copy; Todos direitos reservados
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat Responsivo</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #eef2f3;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    h2 {
+      text-align: center;
+      background-color: #007b7b;
+      color: white;
+      padding: 15px;
+      margin: 0;
+    }
+
+    #chatBox {
+      flex: 1;
+      overflow-y: auto;
+      padding: 15px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .msg {
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 70%;
+      word-wrap: break-word;
+    }
+
+    .user {
+      background: #007b7b;
+      color: white;
+      align-self: flex-end;
+    }
+
+    .empresa {
+      background: #ccc;
+      color: #333;
+      align-self: flex-start;
+    }
+
+    .msg strong {
+      font-size: 0.8em;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    #chatContainer {
+      padding: 10px;
+      background: #ddd;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-area {
+      display: flex;
+      gap: 10px;
+    }
+
+    #msgInput {
+      flex: 1;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #999;
+    }
+
+    #sendBtn {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background: #007b7b;
+      color: white;
+      cursor: pointer;
+    }
+
+    #limparBtn {
+      margin: 10px 0;
+      padding: 10px;
+      background: #d9534f;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .input-area {
+        flex-direction: column;
+      }
+
+      #sendBtn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Converse com o bot</h2>
+
+  <div id="chatBox"></div>
+
+  <div id="chatContainer">
+    <button id="limparBtn" onclick="limparChat()">Limpar chat</button>
+    <div class="input-area">
+      <input type="text" id="msgInput" placeholder="Digite sua mensagem..." />
+      <button id="sendBtn" onclick="enviarMensagem()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    let mensagens = JSON.parse(localStorage.getItem("chatMensagens")) || [];
+
+    function renderizarMensagens() {
+      const chatBox = document.getElementById("chatBox");
+      chatBox.innerHTML = "";
+      mensagens.forEach(msg => {
+        const div = document.createElement("div");
+        div.classList.add("msg", msg.tipo === "user" ? "user" : "empresa");
+        div.innerHTML = `<strong>${msg.nome}:</strong> ${msg.texto}`;
+        chatBox.appendChild(div);
+      });
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function respostaAutomatica(msg) {
+      const texto = msg.toLowerCase();
+      if (texto.includes("vaga")) return "Temos várias vagas abertas!";
+      if (texto.includes("salário")) return "O salário depende do cargo.";
+      if (texto.includes("horário")) return "O horário padrão é 8h-17h.";
+      return "Obrigado pela mensagem!";
+    }
+
+    function enviarMensagem() {
+      const input = document.getElementById("msgInput");
+      const texto = input.value.trim();
+      if (texto === "") return;
+      mensagens.push({ texto, tipo: "user", nome: "Você" });
+      localStorage.setItem("chatMensagens", JSON.stringify(mensagens));
+      renderizarMensagens();
+      input.value = "";
+
+      setTimeout(() => {
+        const resposta = respostaAutomatica(texto);
+        mensagens.push({ texto: resposta, tipo: "empresa", nome: "Empresa" });
+        localStorage.setItem("chatMensagens", JSON.stringify(mensagens));
+        renderizarMensagens();
+      }, 1000);
+    }
+
+    function limparChat() {
+      if (confirm("Deseja apagar o chat?")) {
+        mensagens = [];
+        localStorage.removeItem("chatMensagens");
+        renderizarMensagens();
+      }
+    }
+
+    renderizarMensagens();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Serviços</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f1f5f9;
+      color: #333;
+    }
+    header {
+      background: url('file_00000000d27861f4bc9ecc60f58b6909.png') center center/cover no-repeat;
+      background-size: cover;
+      color: #ffffff;
+      text-align: center;
+      padding: 80px 20px;
+      border-bottom: 5px solid #0099cc;
+      position: relative;
+      height: 80vh;
+      min-height: 100px;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 64, 128, 0.6);
+      z-index: 1;
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 2;
+    }
+    nav {
+      font-size: 15px;
+      display: flex;
+      justify-content: center;
+      background-color: lightslategrey;
+    }
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: block;
+    }
+    nav a:hover {
+      background-color:#575757s;
+    }
+    .content {
+      padding: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .card, .vagas-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 20px;
+      width: 280px;
+      transition: 0.3s;
+    }
+    .card:hover, .vagas-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .card h3, .vagas-card h4 {
+      margin-top: 0;
+      color: #007BFF;
+    }
+    .contact-buttons {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .contact-button {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #0099cc;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .contact-button img {
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    .contact-button:hover {
+      background-color: #0077aa;
+    }
+    .chat-box {
+      background-color: #e2e8f0;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px auto;
+      max-width: 500px;
+      text-align: center;
+    }
+    .botão {
+      text-align: center;
+      margin: 20px;
+    }
+    .botão button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .botão button:hover {
+      background-color: #0056b3;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #e2e8f0;
+      font-size: 13px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Mogovolas Rumo ao Futuro </h1>
+  <p>Empregando a juventude<br> Aproveite as oportunidades de emprego para o noso desenvolvimento!</p>
+  
+</header>
+
+<nav>
+  <a href="menu.html"><i class="fas fa-home"></i> Início</a>
+  <a href="vagas.html"><i class="fas fa-briefcase"></i> Ver Vagas</a>
+  <a href="painel do usuário.html"><i class="fas fa-user-edit"></i> Editar Perfil</a>
+  <a href="formação.html"><i class="fas fa-book"></i> Formação</a>
+  <a href="serviços.html"><i class="fas fa-cogs"></i> Serviços</a>
+    <a href="sobre_nos.html"><i class="fas fa-cogs"></i> Sobre nós</a>
+  <a href="index.html"><i class="fas fa-sign-out-alt"></i> Sair</a>
+</nav>
+
+<h1>Serviços</h1>
+<div class="content">
+  <div class="card">
+    <h3>Cadastro de Candidatos</h3>
+    <p>Recebemos seus dados e currículo com segurança. Nossa equipa irá analisá-los para encontrar oportunidades ideais para o seu perfil.</p>
+  </div>
+  <div class="card">
+    <h3>Vagas em Destaque</h3>
+    <p>Atualizamos semanalmente as melhores vagas nas áreas de tecnologia, administração, saúde, educação, logística e muito mais.</p>
+  </div>
+  <div class="card">
+    <h3>Treinamentos e Cursos</h3>
+    <p>Oferecemos cursos gratuitos e pagos em habilidades práticas para ajudar você a se destacar no mercado de trabalho.</p>
+  </div>
+  <div class="card">
+    <h3>Consultoria de Carreira</h3>
+    <p>Agende uma sessão gratuita com nossos especialistas para melhorar seu currículo e desenvolver sua trajetória profissional.</p>
+  </div>
+  <div class="card">
+    <h3>Parcerias com Empresas</h3>
+    <p>Trabalhamos com empresas confiáveis para garantir contratações seguras e com boas condições de trabalho.</p>
+  </div>
+  <div class="card">
+    <h3>Acompanhamento Personalizado</h3>
+    <p>Você não está sozinho! Oferecemos apoio por WhatsApp e e-mail durante todo o processo de busca por emprego.</p>
+  </div>
+</div>
+
+<div class="contact-buttons">
+  <a href="https://wa.me/258875244921" class="contact-button">
+    <i class="fab fa-whatsapp"></i> Contate-nos via WhatsApp
+  </a>
+  <a href="mailto:neltonotsusuki@gmail.com" class="contact-button">
+    <i class="fas fa-envelope"></i> Enviar e-mail
+  </a>
+</div>
+
+<div class="chat-box">
+  <h4><i class="fas fa-comments"></i> Chat de Dúvidas</h4>
+  <p>Se tiver alguma dúvida sobre nossos serviços ou processo seletivo, fique à vontade para perguntar!</p>
+</div>
+
+<h1 style="text-align:center;">Vagas disponíveis no momento</h1>
+<div class="content">
+  <div class="vagas-card">
+    <h4>Vaga: Desenvolvedor Front-end</h4>
+    <p>Requisitos: Experiência em design gráfico HTML, CSS, JavaScript e experiência no desenvolvimento web.</p>
+    <p><strong>Local:</strong> Nampula</p>
+  </div>
+  <div class="vagas-card">
+    <h4>Vaga: Desenvolvedor Back-end</h4>
+    <p>Requisitos: Conhecimentos em HTML, CSS, JavaScript. Experiência prévia será um diferencial.</p>
+    <p><strong>Local:</strong> Nampula</p>
+  </div>
+  <div class="vagas-card">
+    <h4>Vaga: Analista de Marketing</h4>
+    <p>Requisitos: Experiência em estratégias de marketing digital e SEO.</p>
+    <p><strong>Local:</strong> Nampula</p>
+  </div>
+</div>
+
+<footer>
+  Nelton da Méria Nazaré Ambate&copy; Todos direitos reservados 
+</footer>
+
+</body>
+</html>

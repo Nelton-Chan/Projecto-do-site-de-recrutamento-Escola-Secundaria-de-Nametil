@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel da Empresa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 30px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    section {
+      background: white;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #007b7b;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #005f5f;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+      padding: 10px;
+      background: #f1f1f1;
+      border-radius: 5px;
+    }
+
+    .actions button {
+      margin-right: 10px;
+    }
+
+    .btn-final {
+      display: block;
+      width: 100%;
+      padding: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: #009999;
+      border-radius: 10px;
+      margin-top: 40px;
+      border: none;
+    }
+
+    .btn-final:hover {
+      background-color: #007777;
+    }
+     footer {
+      text-align: center;
+      padding: 15px;
+      background: #e2e8f0;
+      font-size: 13px;
+      margin-top: 30px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Painel da Empresa</h1>
+
+    <section>
+      <h2>Perfil da Empresa</h2>
+      <input type="text" id="nomeEmpresa" placeholder="Nome da empresa">
+      <textarea id="descricaoEmpresa" placeholder="Descrição da empresa"></textarea>
+      <button onclick="salvarPerfilEmpresa()">Salvar Perfil</button>
+    </section>
+
+    <section>
+      <h2>Criar Vaga</h2>
+      <input type="text" id="tituloVaga" placeholder="Título da vaga">
+      <input type="text" id="localVaga" placeholder="Localização">
+      <textarea id="descricaoVaga" placeholder="Descrição da vaga"></textarea>
+      <button onclick="criarVaga()">Publicar Vaga</button>
+    </section>
+
+    <section>
+      <h2>Vagas Publicadas</h2>
+      <ul id="listaVagas"></ul>
+    </section>
+
+    <section>
+      <h2>Candidatos (Exemplo)</h2>
+      <ul id="listaCandidatos">
+        <li>
+          Nelton da Méria Nazaré Ambate- neltonambate7@gmail.com<br>
+          <div class="actions">
+            <button onclick="aprovar()">Aprovar</button>
+            <button onclick="rejeitar()">Rejeitar</button>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <button onclick="abrirChat()">Abrir Chat com Candidato</button>
+    
+    <button class="btn-final" onclick="salvarTudoEmpresa()">Salvar Tudo e Ir para o Menu</button>
+  </div>
+
+  <script>
+    function abrirChat() {
+      const nome = "Empresa XYZ";
+      const tipo = "empresa";
+      window.location.href = `buscar vagas.html?tipo=${tipo}&nome=${encodeURIComponent(nome)}`;
+    }
+
+    function salvarPerfilEmpresa() {
+      const nome = document.getElementById("nomeEmpresa").value;
+      const descricao = document.getElementById("descricaoEmpresa").value;
+      const perfil = { nome, descricao };
+      localStorage.setItem("perfilEmpresa", JSON.stringify(perfil));
+      alert("Perfil salvo com sucesso!");
+    }
+
+    function criarVaga() {
+      const titulo = document.getElementById("tituloVaga").value;
+      const local = document.getElementById("localVaga").value;
+      const descricao = document.getElementById("descricaoVaga").value;
+
+      const novaVaga = { titulo, local, descricao };
+      let vagas = JSON.parse(localStorage.getItem("vagasEmpresa")) || [];
+      vagas.push(novaVaga);
+      localStorage.setItem("vagasEmpresa", JSON.stringify(vagas));
+
+      exibirVagas();
+      alert("Vaga publicada!");
+    }
+
+    function exibirVagas() {
+      const vagas = JSON.parse(localStorage.getItem("vagasEmpresa")) || [];
+      const lista = document.getElementById("listaVagas");
+      lista.innerHTML = "";
+      vagas.forEach((vaga, index) => {
+        const item = document.createElement("li");
+        item.innerHTML = `<strong>${vaga.titulo}</strong> - ${vaga.local}<br>${vaga.descricao}`;
+        lista.appendChild(item);
+      });
+    }
+
+    function aprovar() {
+      alert("Candidato aprovado!");
+    }
+
+    function rejeitar() {
+      alert("Candidato rejeitado!");
+    }
+
+    function salvarTudoEmpresa() {
+      salvarPerfilEmpresa(); // já salva perfil
+      alert("Tudo salvo com sucesso!");
+      window.location.href = "menu_da_empresa.html";
+    }
+    window.onload = () => {
+      exibirVagas();
+      const perfil = JSON.parse(localStorage.getItem("perfilEmpresa"));
+      if (perfil) {
+        document.getElementById("nomeEmpresa").value = perfil.nome;
+        document.getElementById("descricaoEmpresa").value = perfil.descricao;
+      }
+    }
+  </script>
+</body>
+<footer>
+    Nelton da Méria Nazaré Ambate&copy; Todos direitos reservados 
+</footer>
+</html>
